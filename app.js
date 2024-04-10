@@ -1,21 +1,24 @@
-// const coins = [
-//     { name: "500 manat", value: 500.00 },
-//     { name: "200 manat", value: 200.00 },
-//     { name: "100 manat", value: 100.00 },
-//     { name: "50 manat", value: 50.00 },
-//     { name: "20 manat", value: 20.00 },
-//     { name: "10 manat", value: 10.00 },
-//     { name: "5 manat", value: 5.00 },
-//     { name: "1 manat", value: 1.00 }
-// ];
+const input = document.querySelector("#input");
+const form = document.querySelector("#form");
+const result = document.querySelector("#netice");
+const pullar = [500, 200, 100, 50, 20, 10, 5, 1];
 
-function hesabla() {
-    const moneyInput = document.getElementById("money");
-    const money = parseFloat(moneyInput.value);
-
-   if( ){
-
-   }
-
-    // document.getElementById("result").innerHTML = result;
-}
+form.addEventListener("click", (main) => {
+  main.preventDefault();
+  netice.innerHTML = "";
+  let mebleg = +input.value;
+  pullar.map((pul) => {
+    let say = Math.trunc(mebleg / pul);
+    if (say) {
+      mebleg = mebleg - say * pul;
+      const row = document.createElement("div");
+      for (let i = 0; i < say ; i++) {
+        const img = document.createElement("img");
+        img.src = "./images/${pul}";
+        img.style.left = "${i * 60}px";
+        row.append(img);
+      }
+      netice.append(row);
+    }
+  });
+});
